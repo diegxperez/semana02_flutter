@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class CustomTextButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? foregroundColor;
+  final VoidCallback? onPressed;
   final double horizontal;
   final double vertical;
   final String text;
@@ -14,12 +15,13 @@ class CustomTextButton extends StatelessWidget {
     this.foregroundColor = const Color(0xFF010101),
     this.horizontal = 16.0,
     this.vertical = 12.0,
+    this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: onPressed ?? () {},
       style: TextButton.styleFrom(
         backgroundColor: backgroundColor,
         foregroundColor: foregroundColor,

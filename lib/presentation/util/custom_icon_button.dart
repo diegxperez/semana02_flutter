@@ -4,18 +4,20 @@ class CustomIconButton extends StatelessWidget {
   final String imagePath;
   final Color buttonBackgroundColor;
   final bool showBorder;
+  final VoidCallback? onPressed;
 
   const CustomIconButton({
     super.key,
     required this.imagePath,
     this.buttonBackgroundColor = const Color(0xFF2C2C2C),
     this.showBorder = false,
+    this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () {},
+      onPressed: onPressed ?? () {},
       icon: Image.asset(imagePath),
       style: IconButton.styleFrom(
         backgroundColor: buttonBackgroundColor,

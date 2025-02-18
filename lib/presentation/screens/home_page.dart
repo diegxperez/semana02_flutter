@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:semana02_tarea/presentation/util/custom_icon_button.dart';
 import 'package:semana02_tarea/presentation/widgets/custom_listview.dart';
+import 'package:semana02_tarea/presentation/widgets/custom_listview_cards.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -38,7 +40,10 @@ class HomePage extends StatelessWidget {
                 ]),
                 CustomIconButton(
                   imagePath: 'lib/assets/icons/left-arrow.png',
-                )
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
               ],
             ),
             SizedBox(height: 24),
@@ -81,7 +86,7 @@ class HomePage extends StatelessWidget {
                 SizedBox(
                   width: 6,
                 ),
-                CustomIconButton(imagePath: 'lib/assets/icons/Search.png')
+                CustomIconButton(imagePath: 'lib/assets/icons/Config.png')
               ],
             ),
             SizedBox(
@@ -97,8 +102,11 @@ class HomePage extends StatelessWidget {
               children: [
                 Text(
                   'Popular Destination',
-                  style:
-                      TextStyle(fontSize: 20, color: Colors.white, height: 0.27),
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    height: 0.27,
+                  ),
                 ),
                 Text(
                   'View All',
@@ -106,7 +114,11 @@ class HomePage extends StatelessWidget {
                       fontSize: 12, color: Color(0xFFFFFC33), height: 0.16),
                 ),
               ],
-            )
+            ),
+            SizedBox(
+              height: 32,
+            ),
+            CustomListviewCards(),
           ],
         ),
       )),

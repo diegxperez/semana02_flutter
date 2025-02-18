@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:semana02_tarea/presentation/screens/home_page.dart';
 import 'package:semana02_tarea/presentation/util/custom_icon_button.dart';
 import 'package:semana02_tarea/presentation/util/custom_text_button.dart';
 import 'package:semana02_tarea/presentation/widgets/custom_background_image.dart';
@@ -55,7 +57,6 @@ class Onboarding extends StatelessWidget {
                   'Plan trips, explore destinations, and book\nunforgettable experiences.',
                   style: TextStyle(
                     color: Colors.white,
-                    // fontWeight: FontWeight.w600,
                     fontSize: 14,
                     letterSpacing: 0,
                     height: 1.1,
@@ -71,9 +72,56 @@ class Onboarding extends StatelessWidget {
                       buttonBackgroundColor: buttonBackgroundColor,
                       imagePath: 'lib/assets/icons/left-arrow.png',
                       showBorder: true,
+                      onPressed: () async {
+                        final result = await showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title:
+                                const Text('¿Quieres abandonar la aplicacion?'),
+                            actions: [
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, false),
+                                child: const Text('No'),
+                              ),
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, true),
+                                child: const Text('Si'),
+                              ),
+                            ],
+                          ),
+                        );
+                        if (result == true) {
+                          SystemNavigator.pop();
+                        }
+                      },
                     ),
                     CustomTextButton(
                       text: 'Get Started',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) =>
+                                      HomePage(),
+                              transitionsBuilder: (context, animation,
+                                  secondaryAnimation, child) {
+                                const begin = 0.0;
+                                const end = 1.0;
+                                final tween = Tween(begin: begin, end: end);
+                                final curvedAnimation = CurvedAnimation(
+                                  parent: animation,
+                                  curve: Curves.easeInBack,
+                                );
+
+                                return FadeTransition(
+                                    opacity: tween.animate(curvedAnimation),
+                                    child: child);
+                              },
+                              transitionDuration:
+                                  const Duration(milliseconds: 1200)),
+                        );
+                      },
                     ),
                   ],
                 )
