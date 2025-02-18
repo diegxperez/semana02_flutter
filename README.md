@@ -1,16 +1,12 @@
-# semana02_tarea
+# Semana 02 — Tarea
 
-A new Flutter project.
+Pasar diseño de figma a flutter
 
-## Getting Started
+![image](https://github.com/user-attachments/assets/5528ae43-ef5b-483f-8d0d-da83fc988293)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Utilice: utils (Widgets pequeños) -> widgets grandes personalizados -> vistas
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Paquetes utilizados:
+- Google Fonts
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
